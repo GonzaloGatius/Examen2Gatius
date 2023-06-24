@@ -8,13 +8,13 @@
     tools:context=".RandomActivity">
 
     <ImageView
-        android:id="@+id/imageChuckAproves"
+        android:id="@+id/imagechuckaproves"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:rotation="-17"
-        app:srcCompat="@drawable/ChuckAproved"
+        app:srcCompat="@drawable/chuckaproved2"
         tools:layout_editor_absoluteX="232dp"
-        tools:layout_editor_absoluteY="544dp" />
+        tools:layout_editor_absoluteY="542dp" />
 
     <TextView
         android:id="@+id/textViewRandomJoke"
@@ -29,7 +29,7 @@
         android:textAlignment="center"
         android:textColor="#000000"
 
-        app:layout_constraintBottom_toTopOf="@+id/imageChuckAproves"
+        app:layout_constraintBottom_toTopOf="@+id/imagechuckaproves"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

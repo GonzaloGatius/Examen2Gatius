@@ -9,10 +9,11 @@
         android:id="@+id/Categorie"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="#FF8000"
         android:elevation="12dp"
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,26 +21,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageViewCategorie"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:adjustViewBounds="false"
-            android:translationX="10dp"
-
-            tools:srcCompat="@tools:sample/avatars" />
         <!--app:civ_border_color="#000"
                     app:civ_border_width="3dp"-->
         <TextView
-            android:id="@+id/textViewCategorieName"
-            android:layout_width="wrap_content"
+            android:id="@+id/textViewCategoryName"
+            android:layout_width="268dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="66dp"
+            android:layout_marginStart="20dp"
+            android:background="#FF8000"
             android:text="TextView"
-            android:textAlignment="viewStart"
-            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="#1F3A6F"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:translationY="10dp"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 

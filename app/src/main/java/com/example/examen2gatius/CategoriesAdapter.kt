@@ -12,49 +12,86 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 import java.util.stream.Stream
 
-class CategoriesAdapter(val context: Context) : ListAdapter<Locale.Category, CategoriesAdapter.ViewHolder>(DiffCallBack) {
+class CategoriesAdapter(private val Category: List<String>): RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
+    inner class CategoryViewHolder(view: View): RecyclerView.ViewHolder(view) {
+        private val textView: TextView = view.findViewById(R.id.textViewCategoryName)
 
-    //lateinit var onItemClickListener: (Pokemon) -> Unit
-
-    inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        private lateinit var textViewCategoryName: TextView
-
-        fun bind (Category: Locale.Category) {
-            textViewCategoryName = view.findViewById(R.id.textViewCategoryName)
-
-
-
-            textViewCategoryName.text = Category.toString()    //esto esta bien? acá modifiqué CategoriesResponse
-
-//            view.setOnClickListener {
-//                onItemClickListener(Category)
-//            }
+        fun bind(category: String) {
+            textView.text = category //antes tenia textViewCategoryName.text y me daba error, solucionado?
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesAdapter.ViewHolder {
-        val view: View = LayoutInflater
-            .from(parent.context)
-            .inflate(R.layout.itemlist, parent, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return CategoryViewHolder(layoutInflater.inflate(R.layout.itemlist, parent, false))
     }
 
-    override fun onBindViewHolder(holder: CategoriesAdapter.ViewHolder, position: Int) {
-        val Category = getItem(position)
-        holder.bind(Category)
+    override fun getItemCount(): Int {
+        return Category.size
     }
 
-    companion object DiffCallBack : DiffUtil.ItemCallback<Locale.Category>() {
-        override fun areItemsTheSame(oldItem: Locale.Category, newItem: Locale.Category): Boolean {
-//            return  oldItem.id == newItem.id
-            return false
-        }
-
-        override fun areContentsTheSame(oldItem: Locale.Category, newItem: Locale.Category): Boolean {
-            return oldItem == newItem
-        }
+    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
+        val category = Category[position]
+        holder.bind(category)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//class CategoriesAdapter(val context: Context) : ListAdapter<Category, CategoriesAdapter.ViewHolder>(DiffCallBack) {
+//
+//    //lateinit var onItemClickListener: (Pokemon) -> Unit
+//
+//    inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+//        private lateinit var textViewCategoryName: TextView
+//
+//        fun bind (Category: Locale.Category) {
+//            textViewCategoryName = view.findViewById(R.id.textViewCategoryName)
+//            textViewCategoryName.text = Category.toString()    //esto esta bien?
+//
+//            view.setOnClickListener {
+//                onItemClickListener(Category)}
+//        }
+//    }
+//
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesAdapter.ViewHolder {
+//        val view: View = LayoutInflater
+//            .from(parent.context)
+//            .inflate(R.layout.itemlist, parent, false)
+//        return ViewHolder(view)
+//    }
+//
+//    override fun onBindViewHolder(holder: CategoriesAdapter.ViewHolder, position: Int) {
+//        val Category = getItem(position)
+//        holder.bind(Category)
+//    }
+//
+//    companion object DiffCallBack : DiffUtil.ItemCallback<Locale.Category>() {
+//        override fun areItemsTheSame(oldItem: Locale.Category, newItem: Locale.Category): Boolean {
+////            return  oldItem.id == newItem.id
+//            return false
+//        }
+//
+//        override fun areContentsTheSame(oldItem: Locale.Category, newItem: Locale.Category): Boolean {
+//            return oldItem == newItem
+//        }
+//    }
+//}
 
 
 

@@ -17,7 +17,8 @@ class CategoriesAdapter(private val Category: List<String>): RecyclerView.Adapte
         private val textView: TextView = view.findViewById(R.id.textViewCategoryName)
 
         fun bind(category: String) {
-            textView.text = category //antes tenia textViewCategoryName.text y me daba error, solucionado?
+            val uppercasecategory = category.uppercase()
+            textView.text = uppercasecategory //antes tenia textViewCategoryName.text y me daba error, solucionado?
         }
     }
 

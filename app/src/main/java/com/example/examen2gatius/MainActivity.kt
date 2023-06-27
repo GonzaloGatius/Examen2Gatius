@@ -30,10 +30,13 @@ class MainActivity : AppCompatActivity() {
         buttonrandom = findViewById(R.id.buttonRandom)
         buttoncategories = findViewById(R.id.buttonCategories)
 
-        buttoncategories = findViewById(R.id.buttonCategories)
         buttoncategories.setOnClickListener {
             val intent = Intent(this, CategoriesActivity::class.java)
-            startActivity(intent)
+            startActivity(intent)}
+
+        buttonrandom.setOnClickListener {
+            val intent = Intent(this, RandomActivity::class.java)
+            startActivity(intent)}
 
 //        recyclerView = findViewById(R.id.recylcerCategories)
 //esto de arriba que es para bindear con el recyclerView junto con lo de la línea 20 van en CategoriesActivity.kt?
@@ -82,4 +85,4 @@ class MainActivity : AppCompatActivity() {
 //            .addConverterFactory(GsonConverterFactory.create())
 //            .build()
 //    }
-}}
+}

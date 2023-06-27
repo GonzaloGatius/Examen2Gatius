@@ -10,7 +10,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.Locale.Category
 
 class  CategoriesActivity : AppCompatActivity() {
 
@@ -22,7 +21,7 @@ class  CategoriesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
 
-        recyclerView = findViewById(R.id.recylcerCategories)
+        recyclerView = findViewById(R.id.recyclerCategoriesList)
         recyclerView.layoutManager = LinearLayoutManager (this )
         adapter = CategoriesAdapter(ListOfCategories)
         recyclerView.adapter = adapter
@@ -48,6 +47,8 @@ class  CategoriesActivity : AppCompatActivity() {
                     val error = call.errorBody().toString()
                     Log.e("error", error )
                 }
+                adapter.notifyDataSetChanged()
+
             }
             ////////////////////////////////////////////////////////////////////////////////
             ///ARRANCAR DESDE ACA PASANDO LOS DATOS CON UN BUNDLE COMO PIDE EL ENUNCIADO///

@@ -35,13 +35,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 /*
-    //ACÁ SUPONGO QUE VA TODO ENCERRADO EN UN INTENT PARA QUE AL TOCAR EL BOTÓN DE CATERGORÍAS VAYA A SPECIFICACTIVITY
-   Y MUESTRE LAS CATEGORÍAS?
-   corrección a lo anterior!
-   en el main no debería tener únicamente los dos intent y taal vez alguna mención de las corrutinas para que las empiece a cargar
-   cuando pueda, pero todo lo que encierra este private fun getListOfCategories de abajo va en el CategoríesActivity? porque sino
-   le estoy pidiendo que cuando inicie el main me traiga toda la información de categorías, aunque no pulse el botón...
-   no es eso de que le pido que me traiga el body pero todavía no lo analice?
+  la llamada "call" y recepción "response" de la info entiendo que debera hacerla acá en el main, pero  la interpretación
+  del body que traigo no debería hacerla en otro activity? en ese caso, en cual de los categories.kt?
 
  */
     private fun getListOfCategories() {
@@ -57,19 +52,16 @@ class MainActivity : AppCompatActivity() {
                         ListOfCategories.add(category)
                     }
                 }
-//                adapter.submitList(ListOfCategories)
-                ////////////////////////////////////////////////////////////////////////////////
-                ///ARRANCAR DESDE ACA PASANDO LOS DATOS CON UN BUNDLE COMO PIDE EL ENUNCIADO///
-                ///////////////////////////////////////////////////////////////////////////////
-                buttoncategories.setOnClickListener { buttoncategories }
-
-//HASTA ANTES DE METER EL BUTTON2 CORRÍA, SOLO MOSTRABA EL MAIN Y NO HACIA NADA, PERO CORRÍA. DESPUÉS DEL BUTTON2 ROMPE NI BIEN ENTRA AL MAIN,
-// DICE QUE PROBABLEMENTE ESTE METIENDO DEMASIADAS COSAS EN EL HILO PRINCIPAL
-//                } else{
-//                    val error = call.errorBody().toString()
-//                    Log.e("error", error )
-//                }
+                else{
+                    val error = call.errorBody().toString()
+                    Log.e("error", error )
+                }
             }
+            ////////////////////////////////////////////////////////////////////////////////
+            ///ARRANCAR DESDE ACA PASANDO LOS DATOS CON UN BUNDLE COMO PIDE EL ENUNCIADO///
+            ///////////////////////////////////////////////////////////////////////////////
+                adapter.submitList(ListOfCategories)
+                buttoncategories.setOnClickListener { buttoncategories }
         }
     }
 

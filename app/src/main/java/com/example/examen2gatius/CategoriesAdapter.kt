@@ -12,11 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 import java.util.stream.Stream
 
-
-
-
-
-
 class CategoriesAdapter(val context: Context) : ListAdapter<Locale.Category, CategoriesAdapter.ViewHolder>(DiffCallBack) {
 
     //lateinit var onItemClickListener: (Pokemon) -> Unit

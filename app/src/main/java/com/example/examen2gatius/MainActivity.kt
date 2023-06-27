@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,10 +17,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonrandom : Button
     private lateinit var buttoncategories : Button
 
-    private var ListOfCategories: MutableList<Category> = mutableListOf()
+    private var ListOfCategories: MutableList<String> = mutableListOf()
 
-    //private lateinit var adapter: CategoriesAdapter
-    //private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: CategoriesAdapter
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,26 +46,29 @@ class MainActivity : AppCompatActivity() {
  */
     private fun getListOfCategories() {
         CoroutineScope(Dispatchers.IO).launch {
-            val call = getRetrofit().create(APIService::class.java).getJokesByCategories("categories")
+            val call = getRetrofit().create(APIService::class.java).getJokesByCategories()
             val response = call.body()
 
             runOnUiThread {
                 if (call.isSuccessful) {
-                    val button2 = response?.categories ?: "List of Categories"
-                    val categories = response?.categories
+                    val data = response
 
-                    categories?.forEach{ category ->
-                            ListOfCategories.add(category)
-                        }
+                    data?.forEach { category ->
+                        ListOfCategories.add(category)
                     }
-                    adapter.submitList(ListOfCategories)
-                    buttonCategories.setOnClickListener { button2 }
-//HASTA ANTES DE METER EL BUTTON2 CORRÍA, SOLO MOSTRABA EL MAIN Y NO HACIA NADA, PERO CORRÍA. DESPUES DEL BUTTON2 ROMPE NI BIEN ENTRA AL MAIN,
-// DICE QUE PROBABLEMENTE ESTE METIENDO DEMASIADAS COSAS EN EL HILO PRINCIPAL
-                } else {
-                    val error = call.errorBody().toString()
-                    Log.e("error", error )
                 }
+//                adapter.submitList(ListOfCategories)
+                ////////////////////////////////////////////////////////////////////////////////
+                ///ARRANCAR DESDE ACA PASANDO LOS DATOS CON UN BUNDLE COMO PIDE EL ENUNCIADO///
+                ///////////////////////////////////////////////////////////////////////////////
+                buttoncategories.setOnClickListener { buttoncategories }
+
+//HASTA ANTES DE METER EL BUTTON2 CORRÍA, SOLO MOSTRABA EL MAIN Y NO HACIA NADA, PERO CORRÍA. DESPUÉS DEL BUTTON2 ROMPE NI BIEN ENTRA AL MAIN,
+// DICE QUE PROBABLEMENTE ESTE METIENDO DEMASIADAS COSAS EN EL HILO PRINCIPAL
+//                } else{
+//                    val error = call.errorBody().toString()
+//                    Log.e("error", error )
+//                }
             }
         }
     }

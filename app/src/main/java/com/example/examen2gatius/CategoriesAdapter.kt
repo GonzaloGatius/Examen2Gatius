@@ -49,15 +49,16 @@ class CategoriesAdapter(val context: Context) : ListAdapter<Locale.Category, Cat
         holder.bind(Category)
     }
 
-//    companion object DiffCallBack : DiffUtil.ItemCallback<Locale.Category>() {
-//        override fun areItemsTheSame(oldItem: Locale.Category, newItem: Locale.Category): Boolean {
+    companion object DiffCallBack : DiffUtil.ItemCallback<Locale.Category>() {
+        override fun areItemsTheSame(oldItem: Locale.Category, newItem: Locale.Category): Boolean {
 //            return  oldItem.id == newItem.id
-//        }
-//
-//        override fun areContentsTheSame(oldItem: Locale.Category, newItem: Locale.Category): Boolean {
-//            return oldItem == newItem
-//        }
-//    }
+            return false
+        }
+
+        override fun areContentsTheSame(oldItem: Locale.Category, newItem: Locale.Category): Boolean {
+            return oldItem == newItem
+        }
+    }
 }
 
 

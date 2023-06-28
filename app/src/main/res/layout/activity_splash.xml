@@ -9,16 +9,15 @@
 
     <ImageView
         android:id="@+id/imageViewSignature"
-        android:layout_width="263dp"
-        android:layout_height="114dp"
+        android:layout_width="217dp"
+        android:layout_height="81dp"
         android:rotation="-8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.927"
-        tools:srcCompat="@drawable/signature"
+        app:layout_constraintTop_toBottomOf="@+id/loadingSpinner"
+        app:layout_constraintVertical_bias="0.726"
+        tools:srcCompat="@drawable/signature2"
         tools:visibility="visible" />
 
     <TextView
@@ -90,15 +89,14 @@
 
     <ImageView
         android:id="@+id/loadingSpinner"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-        app:srcCompat="@drawable/loading"
+        android:src="@drawable/loading2"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

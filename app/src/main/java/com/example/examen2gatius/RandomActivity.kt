@@ -27,8 +27,6 @@ class RandomActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java )
             startActivity(intent)
         }
-        //apiService = retrofit.create(APIService::class.java)
-        //
         getRandomJoke()
     }
     private fun getRandomJoke(){
@@ -40,14 +38,12 @@ class RandomActivity : AppCompatActivity() {
                 if(randomcall.isSuccessful){
                     val valuerandom = randomresponse?.value
 
-//                    randomdata?.value.toString().forEach {
                         textviewrandomjoke.text = valuerandom
                     }
                 }
             }
         }
     }
-
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()

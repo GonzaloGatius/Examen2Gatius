@@ -29,7 +29,6 @@ class  CategoriesActivity : AppCompatActivity() {
 
         getListOfCategories()
         adapter.notifyDataSetChanged()
-//        adapter.submitList(ListOfCategories)
     }
     private fun getListOfCategories() {
         CoroutineScope(Dispatchers.IO).launch {
@@ -57,13 +56,7 @@ class  CategoriesActivity : AppCompatActivity() {
                     intent.putExtra("category", category)
                     startActivity(intent)
                 }
-
             }
-            ////////////////////////////////////////////////////////////////////////////////
-            ///ARRANCAR DESDE ACA PASANDO LOS DATOS CON UN BUNDLE COMO PIDE EL ENUNCIADO///
-            ///////////////////////////////////////////////////////////////////////////////
-//            adapter.submitList(ListOfCategories)
-//            buttoncategories.setOnClickListener { buttoncategories }
         }
     }
     private fun getRetrofit(): Retrofit {

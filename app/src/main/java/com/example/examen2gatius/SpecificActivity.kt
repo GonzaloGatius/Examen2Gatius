@@ -15,7 +15,6 @@ class SpecificActivity : AppCompatActivity() {
 
     private lateinit var buttonback2: Button
     private lateinit var categorytitle: TextView
-//    private val category = intent.getStringExtra("category")
     private lateinit var category: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

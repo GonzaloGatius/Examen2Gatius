@@ -3,7 +3,7 @@ package com.example.examen2gatius
 
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Url
+import retrofit2.http.Query
 
 interface APIService {
     // PETICIÓN DE CATEGORÍAS
@@ -15,13 +15,13 @@ interface APIService {
 
     // PETICIÓN DE CHISTE RANDOM
 
-//   @GET
-//   suspend fun getRandomJoke(@Url url:String):retrofit2.Response<RandomResponse>
-//
+   @GET ("random")
+   suspend fun getRandomJoke(): Response<RandomResponse>
 
-    //PETICIÓN DE CHISTE RANDOM DE LA CATEGORÍA SELECCIONADA
-// @GET
-// suspend fun getRandomByCategory (@Url url:String):retrofit2.Response<????>
+
+//    PETICIÓN DE CHISTE RANDOM DE LA CATEGORÍA SELECCIONADA
+    @GET ("random")
+    suspend fun getRandomByCategory(@Query("category") category: String): Response<SpecificResponse>
 
 // dejo acá la url del chiste random segun categoria seleccionada PERO ESTÁ CAIDO, ERROR HTTP Status 400 – Bad Request
 // https://api.chucknorris.io/jokes/random?category={category}

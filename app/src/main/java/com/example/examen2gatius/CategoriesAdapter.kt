@@ -1,6 +1,7 @@
 package com.example.examen2gatius
 
 import android.content.Context
+import android.icu.util.ULocale.Category
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,15 +14,22 @@ import java.util.*
 import java.util.stream.Stream
 
 class CategoriesAdapter(private val Category: List<String>): RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
+
+    private var onItemClick: ((String) -> Unit)? = null
+    fun setOnItemClickListener(listener: (String) -> Unit) {
+        onItemClick = listener}
     inner class CategoryViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val textView: TextView = view.findViewById(R.id.textViewCategoryName)
 
         fun bind(category: String) {
             val uppercasecategory = category.uppercase()
-            textView.text = uppercasecategory //antes tenia textViewCategoryName.text y me daba error, solucionado?
+            textView.text = uppercasecategory
+
+            itemView.setOnClickListener{
+                onItemClick?.invoke(category)
         }
     }
-
+}
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return CategoryViewHolder(layoutInflater.inflate(R.layout.itemlist, parent, false))

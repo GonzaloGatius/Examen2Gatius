@@ -1,5 +1,6 @@
 package com.example.examen2gatius
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -35,6 +36,8 @@ class  CategoriesActivity : AppCompatActivity() {
             val call = getRetrofit().create(APIService::class.java).getJokesByCategories()
             val response = call.body()
 
+
+
             runOnUiThread {
                 if (call.isSuccessful) {
                     val data = response
@@ -48,6 +51,12 @@ class  CategoriesActivity : AppCompatActivity() {
                     Log.e("error", error )
                 }
                 adapter.notifyDataSetChanged()
+
+                adapter.setOnItemClickListener { category ->
+                    val intent = Intent(this@CategoriesActivity, SpecificActivity::class.java)
+                    intent.putExtra("category", category)
+                    startActivity(intent)
+                }
 
             }
             ////////////////////////////////////////////////////////////////////////////////
